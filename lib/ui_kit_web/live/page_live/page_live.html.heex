@@ -14,31 +14,55 @@
 			</ul>
 		</div>
 	</div>
-	<main class="h-screen w-full bg-white">
+	<main class="h-screen w-full bg-white" x-data="{ open_basic: false, open_modal_sroll_bar: false, open_modal_cookies: false, open_success_modal: false }">
 			<section class="w-full lg:w-4/5 mx-10 mt-10">
 
-            <!--Title-->
             <h1 class="flex items-center font-sans font-bold break-normal text-gray-700 px-2 mt-12 lg:mt-0 text-2xl">
 				Modal
 			</h1>
 
             <hr class="bg-gray-300 my-12">
-			<div class="ml-2">
+
+			<!-- Basic Modals -->
+			<div>
 				<h2 class="font-sans font-bold break-normal text-gray-700 pb-6 text-xl">Basic</h2>
 				<div class="w-full flex space-x-4 pb-8" id="button">
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm">Basic Modal</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm">Modal w/ Scroll Bar</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm">Basic Modal</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm">Basic Modal</button>
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_basic = true">Basic Modal</button>
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_modal_sroll_bar = true">Modal w/ Scroll Bar</button>
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_modal_cookies = true">Cookies</button>
 				</div>
 			</div>
-			<div class="hidden">
+
+			<div x-show="open_basic">
 				<.live_component module={UiKitWeb.BasicModalComponent} id="hero" />
 			</div>
 
-			<h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Feedback</h2>
+			<div x-show="open_modal_sroll_bar">
+				<.live_component module={UiKitWeb.ModalScrollBarComponent} id="hero" />
+			</div>
 
-			<h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Product</h2>
+			<div x-show="open_modal_cookies">
+				<.live_component module={UiKitWeb.CookiesModalComponent} id="hero" />
+			</div>
+			<!-- Basic Modals End -->
+
+			<!-- Feedback Modals -->
+			<div>
+				<h2 class="font-sans font-bold break-normal text-gray-700 pb-8 text-xl">Feedback</h2>
+
+				<div class="w-full flex space-x-4 pb-8" id="button">
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_success_modal = true">Success Modal</button>
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_danger_modal = true">Danger Modal</button>
+					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_info_modal = true">Info Modal</button>
+				</div>
+			</div>
+
+			<div x-show="open_success_modal">
+				<.live_component module={UiKitWeb.SuccessModalComponent} id="hero" />
+			</div>
+
+			<!-- Feedback Modals End-->
+			<h2 class="font-sans font-bold break-normal text-gray-700 pb-8 text-xl">Product</h2>
 
 			</section>
 
