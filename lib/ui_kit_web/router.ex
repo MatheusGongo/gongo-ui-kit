@@ -18,6 +18,8 @@ defmodule UiKitWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/modals", ModalsLive, :modals
+    live "/buttons", ButtonsLive, :buttons
   end
 
   # Other scopes may use custom stacks.

@@ -8,8 +8,7 @@ config :ui_kit, UiKitWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :ui_kit, UiKit.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :ui_kit, UiKit.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn

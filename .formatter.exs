@@ -1,4 +1,6 @@
 [
+  plugins: [Phoenix.LiveView.HTMLFormatter],
   import_deps: [:phoenix],
-  inputs: ["*.{ex,exs}", "{config,lib,test}/**/*.{ex,exs}"]
+  inputs: ["*.{heex,ex,exs}", "priv/*/seeds.exs", "{config,lib,test,seeds}/**/*.{heex,ex,exs}"],
+  subdirectories: ["priv/*/migrations"]
 ]

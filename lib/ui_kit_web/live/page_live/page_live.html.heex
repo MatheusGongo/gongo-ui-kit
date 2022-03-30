@@ -1,73 +1,20 @@
-<div class="flex">
-	<div class="md:flex w-2/5 md:w-1/4 h-screen bg-white border-r hidden">
-		<div class="mx-auto py-10">
-			<h1 class="text-2xl font-bold mb-10 cursor-pointer text-indigo-600 duration-150">Gongo UI KIT</h1>
-			<ul>
-				<li class="flex space-x-2 mt-10 cursor-pointer hover:text-indigo-600 duration-150">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-						stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-							d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-					</svg>
-					<span class="font-semibold">Modal</span>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<main class="h-screen w-full bg-white" x-data="{ open_basic: false, open_modal_sroll_bar: false, open_modal_cookies: false, open_success_modal: false }">
-			<section class="w-full lg:w-4/5 mx-10 mt-10">
+<div
+  class="flex"
+  
+>
+  <div class="md:flex w-2/5 md:w-1/4 h-screen bg-white border-r" x-data="{dropdown_component: false }">
+    <.live_component module={UiKitWeb.SidebarComponent} id="sidebar" />
+  </div>
 
-            <h1 class="flex items-center font-sans font-bold break-normal text-gray-700 px-2 mt-12 lg:mt-0 text-2xl">
-				Modal
-			</h1>
-
-            <hr class="bg-gray-300 my-12">
-
-			<!-- Basic Modals -->
-			<div>
-				<h2 class="font-sans font-bold break-normal text-gray-700 pb-6 text-xl">Basic</h2>
-				<div class="w-full flex space-x-4 pb-8" id="button">
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_basic = true">Basic Modal</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_modal_sroll_bar = true">Modal w/ Scroll Bar</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_modal_cookies = true">Cookies</button>
-				</div>
-			</div>
-
-			<div x-show="open_basic">
-				<.live_component module={UiKitWeb.BasicModalComponent} id="hero" />
-			</div>
-
-			<div x-show="open_modal_sroll_bar">
-				<.live_component module={UiKitWeb.ModalScrollBarComponent} id="hero" />
-			</div>
-
-			<div x-show="open_modal_cookies">
-				<.live_component module={UiKitWeb.CookiesModalComponent} id="hero" />
-			</div>
-			<!-- Basic Modals End -->
-
-			<!-- Feedback Modals -->
-			<div>
-				<h2 class="font-sans font-bold break-normal text-gray-700 pb-8 text-xl">Feedback</h2>
-
-				<div class="w-full flex space-x-4 pb-8" id="button">
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_success_modal = true">Success Modal</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_danger_modal = true">Danger Modal</button>
-					<button class="focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" @click="open_info_modal = true">Info Modal</button>
-				</div>
-			</div>
-
-			<div x-show="open_success_modal">
-				<.live_component module={UiKitWeb.SuccessModalComponent} id="hero" />
-			</div>
-
-			<!-- Feedback Modals End-->
-			<h2 class="font-sans font-bold break-normal text-gray-700 pb-8 text-xl">Product</h2>
-
-			</section>
-
-        <footer class="text-center py-6 bg-gray-100">
-            Copyright &copy; 2022 Template by Matheus Gongo
-        </footer>
-    </main>
+  <main class="h-screen w-full bg-white">
+	<%= if @live_action == :index do %>
+  		<%= live_render(@socket, UiKitWeb.ModalsLive, id: "modals-live") %>
+	<% end %>
+	<%= if @live_action == :buttons do %>
+  		<%= live_render(@socket, UiKitWeb.ButtonsLive, id: "buttons-live") %>
+	<% end %>
+    <footer class="text-center py-6 bg-gray-100">
+      Copyright &copy; 2022 Template by Matheus Gongo
+    </footer>
+  </main>
 </div>
